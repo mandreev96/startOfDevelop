@@ -1,11 +1,11 @@
 let path = require('path'),
-    extract = require('extract-text-webpack-plugin')
+    miniCss = require('mini-css-extract-plugin')
 
 let conf = {
     mode: 'development',
-    entry: "./src/js/index.js",
+    entry: "./App/src/js/index.js",
     output: {
-        path: path.resolve(__dirname, "./src/dist"),
+        path: path.resolve(__dirname, "./App/dist"),
         filename: "main.js",
         publicPath: "dist/"
     },
@@ -13,22 +13,22 @@ let conf = {
         rules: [
             {
                 test: /\.sass$/,
-                use: extract.extract({
-                    fallback: 'style-loader',
-                    use: ['css-loader', 'sass-loader']
-                })
+                use: [
+                    'style-loader',
+                    miniCss.loader,
+                    'css-loader',
+                    'sass-loader'
+                ]
             },
+
             {
-                test: /\.css$/,
-                use: extract.extract({
-                    fallback: 'style-loader',
-                    use: ['css-loader']
-                })
+                test: /\.(woff|woff2|eot|ttf|svg)$/,
+                loader: 'file-loader?name=./fonts/[name].[ext]'
             }
         ]
     },
     plugins: [
-        new extract({
+        new miniCss({
             filename: 'style.css'
         })
     ]

@@ -20,6 +20,14 @@ let conf = {
                     'sass-loader'
                 ]
             },
+            {
+                test: /\.css$/,
+                use: [
+                    'style-loader',
+                    miniCss.loader,
+                    'css-loader'
+                ]
+            },
 
             {
                 test: /\.(woff|woff2|eot|ttf|svg)$/,

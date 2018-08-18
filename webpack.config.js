@@ -17,6 +17,13 @@ let conf = {
                     fallback: 'style-loader',
                     use: ['css-loader', 'sass-loader']
                 })
+            },
+            {
+                test: /\.css$/,
+                use: extract.extract({
+                    fallback: 'style-loader',
+                    use: ['css-loader']
+                })
             }
         ]
     },

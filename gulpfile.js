@@ -26,7 +26,7 @@ gulp.task('serverRun', function () {
     })
 })
 
-gulp.task('watch', ['build', 'serverRun', 'cleanCSS'], () => {
+gulp.task('start', ['build', 'serverRun', 'cleanCSS'], () => {
     gulp.watch('./App/src/js/*.js', ['build', browserSync.reload])
     gulp.watch('./App/src/styles/*.sass', ['build', browserSync.reload])
     gulp.watch('./App/*.html', browserSync.reload)

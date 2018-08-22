@@ -7,7 +7,7 @@ let conf = {
     output: {
         path: path.resolve(__dirname, "./App/dist"),
         filename: "main.js",
-        publicPath: "dist/"
+        publicPath: "./"
     },
     module: {
         rules: [
